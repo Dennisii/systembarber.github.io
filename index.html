@@ -8,6 +8,76 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+
+
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Encabezado con Imagen</title>
+  <style>
+    /* Estilos generales */
+    body, html {
+      margin: 0;
+      padding: 0;
+      
+      height: 100%;
+      background-image: url('https://img.freepik.com/fotos-premium/equipo-peluqueria-concepto-peluqueria-premium-tijeras-accesorios-corte-pelo-conceptos-belleza-salud-hombres_486333-6203.jpg?semt=ais_items_boosted&w=740'); /* Imagen de fondo */
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      
+    }
+
+    /* Imagen grande de encabezado */
+    .hero {
+      background-image:url('https://carlois.sirv.com/Images/dhj.png'); /* Imagen de encabezado */
+      background-size: cover;
+      background-position: center;
+      height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: rgba(0, 0, 0, 0); /* Oscurece para mejorar la legibilidad del texto */
+    }
+
+    .hero h1 {
+      z-index: 1;
+      font-size: 3em;
+      margin: 0;
+    }
+
+    /* Contenido debajo del encabezado */
+    .contenido {
+      padding: 40px;
+      background-color: rgba(0, 0, 0, 0.6);
+      max-width: 800px;
+      margin: auto;
+      border-radius: 10px;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2em;
+      }
+    }
+  </style>
+
+
+
+  <div class="hero">
+    <h1></h1>
+  </div>
+
+
   
   <style id="app-style">
     body {
@@ -41,7 +111,7 @@
     }
     
     .service-card.selected {
-      border-color: #4f46e5;
+      border-color: #e70000;
       background-color: #eef2ff;
     }
     
@@ -50,7 +120,7 @@
     }
     
     .option-btn.selected {
-      background-color: #4f46e5;
+      background-color: #e70000;
       color: white;
     }
     
@@ -66,18 +136,18 @@
     }
     
     .worker-card.selected {
-      border-color: #4f46e5;
+      border-color: #b61010;
       background-color: #eef2ff;
     }
     
     .btn-primary {
-      background-color: #4f46e5;
+      background-color: #e70000;
       color: white;
       transition: all 0.3s ease;
     }
     
     .btn-primary:hover {
-      background-color: #4338ca;
+      background-color: #bd0101;
     }
     
     .btn-primary:disabled {
@@ -148,22 +218,48 @@
     .modal.active .modal-content {
       transform: translateY(0);
     }
+    
+    .testimonials-carousel {
+      overflow: hidden;
+      height: 220px;
+      position: relative;
+    }
+    
+    .testimonials-track {
+      display: flex;
+      animation: scroll-right 30s linear infinite;
+    }
+    
+    .testimonial-item {
+      flex: 0 0 auto;
+      width: calc(33.333% - 1.5rem);
+      min-width: 280px;
+    }
+    
+    .testimonials-carousel:hover .testimonials-track {
+      animation-play-state: paused;
+    }
+    
+    @keyframes scroll-right {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
   </style>
 </head>
 <body class="min-h-screen">
   <div class="container mx-auto px-4 py-8 max-w-4xl">
     <header class="text-center mb-10">
-      <h1 class="text-3xl font-bold text-indigo-800">Beauty Book</h1>
-      <p class="text-gray-600">Agenda tu cita de belleza y cuidado personal</p>
+      <h1 class="text-3xl font-bold text-indigo-100">Beauty Book</h1>
+      <p class="text-gray-500">Agenda tu cita de belleza y cuidado personal</p>
     </header>
     
     <!-- Pantalla 1: Selección de Servicio -->
     <div id="screen-1" class="screen active">
-      <h2 class="text-3xl font-bold text-center mb-10 text-gray-800">¿Qué servicio deseas?</h2>
+      <h2 class="text-3xl font-bold text-center mb-10 text-gray-100">¿Qué servicio deseas?</h2>
       
       <div class="grid md:grid-cols-3 gap-6 mt-8">
         <div class="service-card bg-white rounded-xl shadow-md p-6 text-center" data-service="barberia">
-          <div class="w-24 h-24 mx-auto bg-indigo-100 rounded-full flex items-center justify-center mb-4">
+          <div class="w-24 h-24 mx-auto bg-indigo-800 rounded-full flex items-center justify-center mb-4">
             <i class="fas fa-cut text-4xl text-indigo-600"></i>
           </div>
           <h3 class="text-xl font-semibold mb-2">Barbería</h3>
@@ -189,52 +285,60 @@
       
       <!-- Nueva sección de testimonios -->
       <div class="mt-16">
-        <h3 class="text-2xl font-semibold mb-8 text-gray-800 text-center">Lo que dicen nuestros clientes</h3>
-        <div class="grid md:grid-cols-3 gap-6">
-          <div class="bg-white rounded-xl shadow-md p-6">
-            <div class="flex items-center mb-4">
-              <img src="https://randomuser.me/api/portraits/women/12.jpg" alt="Cliente" class="w-12 h-12 rounded-full mr-4">
-              <div>
-                <p class="font-semibold">Laura M.</p>
-                <div class="text-yellow-400">
-                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+        <h3 class="text-2xl font-semibold mb-8 text-gray-100 text-center">Lo que dicen nuestros clientes</h3>
+        <!-- Reemplazar el grid por un carrusel -->
+        <div class="testimonials-carousel relative overflow-hidden">
+          <div class="testimonials-track flex">
+            <!-- Primer testimonio -->
+            <div class="testimonial-item bg-white rounded-xl shadow-md p-6 mr-6">
+              <div class="flex items-center mb-4">
+                <img src="https://randomuser.me/api/portraits/women/12.jpg" alt="Cliente" class="w-12 h-12 rounded-full mr-4">
+                <div>
+                  <p class="font-semibold">Laura M.</p>
+                  <div class="text-yellow-400">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                  </div>
                 </div>
               </div>
+              <p class="text-gray-600 italic">"El mejor servicio de peluquería que he tenido. Siempre salgo feliz con mi nuevo look."</p>
             </div>
-            <p class="text-gray-600 italic">"El mejor servicio de peluquería que he tenido. Siempre salgo feliz con mi nuevo look."</p>
-          </div>
-          
-          <div class="bg-white rounded-xl shadow-md p-6">
-            <div class="flex items-center mb-4">
-              <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Cliente" class="w-12 h-12 rounded-full mr-4">
-              <div>
-                <p class="font-semibold">Carlos R.</p>
-                <div class="text-yellow-400">
-                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+            
+            <!-- Segundo testimonio -->
+            <div class="testimonial-item bg-white rounded-xl shadow-md p-6 mr-6">
+              <div class="flex items-center mb-4">
+                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Cliente" class="w-12 h-12 rounded-full mr-4">
+                <div>
+                  <p class="font-semibold">Carlos R.</p>
+                  <div class="text-yellow-400">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                  </div>
                 </div>
               </div>
+              <p class="text-gray-600 italic">"Excelente atención en barbería. Profesionales que saben lo que hacen."</p>
             </div>
-            <p class="text-gray-600 italic">"Excelente atención en barbería. Profesionales que saben lo que hacen."</p>
-          </div>
-          
-          <div class="bg-white rounded-xl shadow-md p-6">
-            <div class="flex items-center mb-4">
-              <img src="https://randomuser.me/api/portraits/women/28.jpg" alt="Cliente" class="w-12 h-12 rounded-full mr-4">
-              <div>
-                <p class="font-semibold">Sofía T.</p>
-                <div class="text-yellow-400">
-                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            
+            <!-- Tercer testimonio -->
+            <div class="testimonial-item bg-white rounded-xl shadow-md p-6 mr-6">
+              <div class="flex items-center mb-4">
+                <img src="https://randomuser.me/api/portraits/women/28.jpg" alt="Cliente" class="w-12 h-12 rounded-full mr-4">
+                <div>
+                  <p class="font-semibold">Sofía T.</p>
+                  <div class="text-yellow-400">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                  </div>
                 </div>
               </div>
+              <p class="text-gray-600 italic">"Mi manicura quedó perfecta. Sin duda volveré pronto."</p>
             </div>
-            <p class="text-gray-600 italic">"Mi manicura quedó perfecta. Sin duda volveré pronto."</p>
+            
+            <!-- Los testimonios se duplicarán mediante JavaScript -->
           </div>
         </div>
       </div>
       
       <!-- Franja de horarios de atención -->
       <div class="mt-12 bg-indigo-50 py-4 px-6 rounded-lg text-center">
-        <p class="text-indigo-800 font-medium">
+        <p class="text-indigo-700 font-medium">
           <i class="far fa-clock mr-2"></i> Horarios de atención: 
           <span class="ml-2">Lunes a sábados: 8:30am - 7:00pm | Domingos: 11:00am - 5:00pm</span>
         </p>
@@ -259,10 +363,10 @@
     <!-- Pantalla 2: Opciones Específicas -->
     <div id="screen-2" class="screen">
       <div class="flex items-center mb-6">
-        <button id="back-to-1" class="mr-4 text-indigo-600 hover:text-indigo-800">
+        <button id="back-to-1" class="mr-4 text-indigo-100 hover:text-indigo-800">
           <i class="fas fa-arrow-left"></i> Atrás
         </button>
-        <h2 id="service-options-title" class="text-2xl font-bold text-gray-800">Elige tu opción de servicio</h2>
+        <h2 id="service-options-title" class="text-2xl font-bold text-gray-100">Elige tu opción de servicio</h2>
       </div>
       
       <div id="options-container" class="space-y-3 mt-6">
@@ -279,10 +383,10 @@
     <!-- Pantalla 3: Selección de Trabajador -->
     <div id="screen-3" class="screen">
       <div class="flex items-center mb-6">
-        <button id="back-to-2" class="mr-4 text-indigo-600 hover:text-indigo-800">
+        <button id="back-to-2" class="mr-4 text-indigo-100 hover:text-indigo-800">
           <i class="fas fa-arrow-left"></i> Atrás
         </button>
-        <h2 class="text-2xl font-bold text-gray-800">Selecciona al estilista/esteticista</h2>
+        <h2 class="text-2xl font-bold text-gray-100">Selecciona al estilista/esteticista</h2>
       </div>
       
       <div id="workers-container" class="grid md:grid-cols-2 gap-6 mt-6">
@@ -299,10 +403,10 @@
     <!-- Pantalla 4: Fecha y Hora -->
     <div id="screen-4" class="screen">
       <div class="flex items-center mb-6">
-        <button id="back-to-3" class="mr-4 text-indigo-600 hover:text-indigo-800">
+        <button id="back-to-3" class="mr-4 text-indigo-600 hover:text-indigo-100">
           <i class="fas fa-arrow-left"></i> Atrás
         </button>
-        <h2 class="text-2xl font-bold text-gray-800">Selecciona fecha y hora</h2>
+        <h2 class="text-2xl font-bold text-gray-100">Selecciona fecha y hora</h2>
       </div>
       
       <div class="bg-white rounded-xl shadow-md p-6">
@@ -327,10 +431,10 @@
     <!-- Pantalla 5: Confirmación -->
     <div id="screen-5" class="screen">
       <div class="flex items-center mb-6">
-        <button id="back-to-4" class="mr-4 text-indigo-600 hover:text-indigo-800">
+        <button id="back-to-4" class="mr-4 text-indigo-100 hover:text-indigo-800">
           <i class="fas fa-arrow-left"></i> Atrás
         </button>
-        <h2 class="text-2xl font-bold text-gray-800">Confirma tu cita</h2>
+        <h2 class="text-2xl font-bold text-gray-100">Confirma tu cita</h2>
       </div>
       
       <div class="bg-white rounded-xl shadow-md p-6">
@@ -414,15 +518,15 @@
     
     const workers = {
       barberia: [
-        { id: 'juan', name: 'Juan Pérez', photo: 'https://cdn.pixabay.com/photo/2019/11/10/11/13/man-4615865_960_720.jpg', whatsapp: '5491234567890' },
-        { id: 'carlos', name: 'Carlos Rodríguez', photo: 'https://cdn.pixabay.com/photo/2022/08/06/11/01/man-7368395_960_720.jpg', whatsapp: '5491234567891' }
+        { id: 'juan', name: 'Juan Pérez', photo: 'https://cdn.pixabay.com/photo/2019/11/10/11/13/man-4615865_960_720.jpg', whatsapp: '593959287473' },
+        { id: 'carlos', name: 'Carlos Rodríguez', photo: 'https://cdn.pixabay.com/photo/2022/08/06/11/01/man-7368395_960_720.jpg', whatsapp: '593959287473' }
       ],
       peluqueria: [
-        { id: 'maria', name: 'María González', photo: 'https://cdn.pixabay.com/photo/2017/02/16/23/10/smile-2072907_960_720.jpg', whatsapp: '5491234567892' }
+        { id: 'maria', name: 'María González', photo: 'https://cdn.pixabay.com/photo/2017/02/16/23/10/smile-2072907_960_720.jpg', whatsapp: '593959287473' }
       ],
       manicura: [
-        { id: 'laura', name: 'Laura Torres', photo: 'https://cdn.pixabay.com/photo/2018/01/15/07/52/woman-3083401_960_720.jpg', whatsapp: '5491234567893' },
-        { id: 'ana', name: 'Ana López', photo: 'https://cdn.pixabay.com/photo/2017/04/05/10/45/girl-2204622_960_720.jpg', whatsapp: '5491234567894' }
+        { id: 'laura', name: 'Laura Torres', photo: 'https://cdn.pixabay.com/photo/2018/01/15/07/52/woman-3083401_960_720.jpg', whatsapp: '593959287473' },
+        { id: 'ana', name: 'Ana López', photo: 'https://cdn.pixabay.com/photo/2017/04/05/10/45/girl-2204622_960_720.jpg', whatsapp: '593959287473' }
       ]
     };
     
@@ -762,8 +866,19 @@
         reservaRapidaBtn.addEventListener('click', () => {
           const mensaje = encodeURIComponent('Hola Dennis, me gustaría agendar una cita');
           // Reemplaza el número de teléfono a continuación por el deseado, por ejemplo, el de Dennis
-          const numeroWhatsApp = '5491234567890';
+          const numeroWhatsApp = '593959287473';
           window.open(`https://wa.me/${numeroWhatsApp}?text=${mensaje}`, '_blank');
+        });
+      }
+      
+      // Inicializar el carrusel de testimonios
+      const testimonialsTrack = document.querySelector('.testimonials-track');
+      if (testimonialsTrack) {
+        // Clonar los testimonios para crear un efecto de scroll infinito
+        const testimonialItems = Array.from(testimonialsTrack.querySelectorAll('.testimonial-item'));
+        testimonialItems.forEach(item => {
+          const clone = item.cloneNode(true);
+          testimonialsTrack.appendChild(clone);
         });
       }
     });
@@ -774,7 +889,7 @@
     <button class="btn-primary rounded-full w-16 h-16 flex items-center justify-center shadow-lg hover:scale-105 transition-transform">
       <i class="fas fa-calendar-check text-2xl"></i>
     </button>
-    <span class="absolute -top-10 right-0 bg-white px-3 py-1 rounded-lg shadow-md text-sm font-medium">Reserva Rápida</span>
+    <span class="absolute -top-10 right-0 bg-white px-3 py-1 rounded-lg shadow-md text-sm font-medium"></span>
   </div>
 </body>
 </html>
